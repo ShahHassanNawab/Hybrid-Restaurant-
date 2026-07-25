@@ -9,7 +9,14 @@ Menu  = {
     6: {"name": "Shawarma", "price": 350},
     7: {"name": "Cold Drinks", "price": 120}
 }
-
+Rmenu = {
+    1: {"name": "Half chicken Karahi", "price": 1000},
+    2: {"name": "Full chicken Karahi", "price": 1600},
+    3: {"name": "Fish per KG", "price": 800},
+    4: {"name": "Chicken Malai Boti", "price": 750},
+    5: {"name": "Special Bairyani", "price":550 },
+    6: {"name": "Naan/Roti", "price": 30}
+}
 
 cart=[]
 
@@ -19,6 +26,44 @@ def welcome():
     print("*"*50)
 
 
+def hybrid():
+    print("""
+    1) Fast food
+    2) Resturent System 
+    2) Hotel 
+    """)
+
+def DesiRes():
+    print("""
+        1) Half chicken Karahi        Rs 1000
+        2) Full chicken Karahi        Rs 1600
+        3) Fish per KG                Rs 800
+        4) Chicken Malai Bot          Rs 750
+        5) Special Bairyani           Rs  550
+        6) Naan/Roti                  Rs  30
+    """)
+
+
+    while True:
+
+        choice = int(input("Enter food choice : "))
+        if choice == 0:
+                break
+        
+        if choice not in Menu:
+            print("Invalid Choice")
+            continue
+
+        quantity = int(input ("Enter quantity"))
+        cart.append({
+            "name": Rmenu[choice]["name"],
+            "price":Rmenu[choice]["price"],
+            "quantity": quantity
+        })
+
+        print("Added Sucessfully ")
+        
+    
 # ========================================================================================================
 def register():
     username = input("Enter user Name: ")
@@ -93,29 +138,22 @@ def view_cart():
    
     G_total = 0
     
-    print(f"{'Item':<15}{'Qty':<8}{'Price':<10}{'Total'}")
+    print(f"{'Item':<25}{'Qty':<10}{'Price':<10}{'Total'}")
 
     for item in cart:
         total = item["price"]*item["quantity"]
 
         G_total += total 
-        print(f"{item["name"]:<15}{item["quantity"]:<8}{item["price"]:<10}{total}")
+        print(f"{item["name"]:<25}{item["quantity"]:<10}{item["price"]:<10}{total}")
 
-        if G_total >= 6000:
-            discount = G_total*0.20
-            final_bill = G_total- discount
-            print("Final Bill With 20 % Discount: ", final_bill)
-            print("-"*30)
-           
-        else:
-            print("No Discount")
-            print("-"*30)
-            print("Final Bill", G_total)
+        print("*"*30)
+        print("Final Bill: ", G_total)
 
-    print("-"*30)
+    print("*"*30)
 
 # ===================================================================================================
-
+DesiRes()
+view_cart()
 def main():
     welcome()
 
@@ -152,5 +190,5 @@ If you are new please Register
         else:
             print ("Invilid Nuber you Enter ")
 
-main()
+
 
