@@ -29,7 +29,7 @@ def welcome():
 def hybrid():
     print("""
     1) Fast food
-    2) Resturent System 
+    2) Desi Food Resturent 
     2) Hotel 
     """)
 
@@ -42,7 +42,6 @@ def DesiRes():
         5) Special Bairyani           Rs  550
         6) Naan/Roti                  Rs  30
     """)
-
 
     while True:
 
@@ -65,6 +64,62 @@ def DesiRes():
         
     
 # ========================================================================================================
+def hotel():
+    
+    print("""Only Booking Room  System
+    1) Standard Room 
+    2) Delux Room
+    3) Exit
+ """)
+
+    charges = 0
+    choice = int(input("Enter Room Choice: "))
+
+    if choice == 1:
+        print("""Standard Room Select Rent per day is 2000
+        Common featue of standard Room is 
+        1) 2 Single bed
+        2) Free Wifi
+        3) Drinking Water
+        """)
+
+
+        days = int(input("Enter Number of days to stay: "))
+        bill = 2000*days
+
+        print("="*30)
+        print("Total Bill is : ",bill)
+        print("="*30)
+
+    elif choice == 2:
+        print("""Delux Room select Rent per day 5000
+        Deluxe Room Features
+        1) Free Wifi
+        2) Sitting Area
+        3) Mini refrigerator
+        4) Air conditioning / heating
+        5) Tea/coffee maker
+        6) Smart TV / LED TV
+        7) Private bathroom with hot & cold water
+        """)
+
+
+        days = int(input("Enter number of day to stay: "))
+        bill = 5000*days
+
+        print("="*30)
+        print("Total Bill : ", bill)
+        print("="*30)
+
+    elif choice ==3:
+        print("Thanks")
+        
+    else:
+        print("Invilid number you enter ")
+
+    
+# ========================================================================================================
+
 def register():
     username = input("Enter user Name: ")
     email = input("Enter email")
@@ -151,9 +206,11 @@ def view_cart():
 
     print("*"*30)
 
+
 # ===================================================================================================
-DesiRes()
-view_cart()
+# ===================================================================================================
+
+
 def main():
     welcome()
 
@@ -171,24 +228,69 @@ If you are new please Register
         login()
     else:
         print("Invilid Number")
+        
 
-    while True: 
-        print("""
-    1) Add Food
-    2) View Bill 
-    3) Exit 
-    """)
-        choice = int(input("Enter 1 FOR FOOD and 2 for bill: "))
+    print("""
+        1) Fast food
+        2) Desi Food Resturent 
+        2) Hotel 
+        """)
 
-        if choice == 1:
-            Add_Food_To_Cart()
-        elif choice ==2: 
-            view_cart()
-        elif choice == 3:
-            print("Thank for visiting ")
-            break
-        else:
-            print ("Invilid Nuber you Enter ")
+    choice = int(input("Enter Your choice: "))
+
+    if choice == 1:
+        print("#"*40)
+        print("          Welcome to fast Food ")
+        print("#"*40)
+        while True: 
+            print("""
+        1) Add Food
+        2) View Bill 
+        3) Exit 
+        """)
+            choice = int(input("Enter 1 FOR FOOD and 2 for bill: "))
+
+            if choice == 1:
+                Add_Food_To_Cart()
+            elif choice ==2: 
+                view_cart()
+            elif choice == 3:
+                print("Thank for visiting ")
+                break
+            else:
+                print ("Invilid Nuber you Enter ")
+
+    elif choice == 2:
+        print("#"*40)
+        print("Welcome to Resturent")
+        print("#"*40)
+
+        DesiRes()
+        while True: 
+                    print("""
+                1) Add Food
+                2) View Bill 
+                3) Exit 
+                """)
+                    choice = int(input("Enter 1 FOR FOOD and 2 for bill: "))
+        
+                    if choice == 1:
+                        Add_Food_To_Cart()
+                    elif choice ==2: 
+                        view_cart()
+                    elif choice == 3:
+                        print("Thank for visiting ")
+                        break
+                    else:
+                        print ("Invilid Nuber you Enter ")
+
+    elif choice == 3:
+        print("#"*40)
+        print("Welcome to Hotel")
+        print("#"*40)
+
+
+
 
 
 
