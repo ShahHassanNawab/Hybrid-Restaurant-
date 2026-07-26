@@ -25,14 +25,87 @@ def welcome():
     print("        Welcome to Hybrid Resturent             ")
     print("*"*50)
 
+# ========================================================================================================
+#                     ADMIN 
+# ========================================================================================================
+def Admin_login():
+    admin_email = "admin@gmail.com"
+    admin_pin = "admin123"
+
+    max_attempt = 3
+    attempt = 0
+    correct = False
+
+    while attempt < max_attempt:
+        email = input("Enter Email: ")
+        pin = input("Enter PIN: ")
+
+        if email == admin_email and pin == admin_pin:
+            correct = True
+            break
+
+        else:
+            attempt += 1
+            print("Wrong Email or PIN.")
+            print("Attempts Left:", max_attempt - attempt)
+
+    if correct:
+        print(":::::: Admin Login Successfully ::::::")
+    else:
+        print("Account Blocked")
+
+# ========================================================================================================
+def add_Menu():
+    name = input("Enter name: ").strip()
+    price = int(input("Enter Price: ").strip())
+    new_id = max(Menu.keys())+1
+    Menu[new_id] ={
+        "name":name,
+        "price":price
+    }
+
+# ========================================================================================================
+
+#  ========================================================================================================
+def register():
+    username = input("Enter user Name: ")
+    email = input("Enter email")
+    password = input("Enter Password")
+    phonenNo = int(input("Enter Phone Number: "))
+
+    user ={
+        "User Name: ": username,
+        "email: ": email,
+        "Password: ":password,
+        "phonenNo: ": phonenNo
+}
+
+    users.append(user)
+    print("Register Sucessfully")
+
+
+def login():
+    
+    for user in users:
+
+        email = input("Enter email")
+        password = input("Enter Password")
+
+        if user["email"] == email and user["Password"] == password:
+            print("Login Sucessfully")
+            return
+        
+        print("Invilid email or password")
+
+# ========================================================================================================
+# ========================================================================================================
 
 def hybrid():
     print("""
-    1) Fast food
-    2) Desi Food Resturent 
-    2) Hotel 
-    """)
-
+            1) Fast food
+            2) Desi Food Resturent 
+            2) Hotel 
+            """)
 def DesiRes():
     print("""
         1) Half chicken Karahi        Rs 1000
@@ -62,7 +135,8 @@ def DesiRes():
 
         print("Added Sucessfully ")
         
-    
+# ========================================================================================================
+
 # ========================================================================================================
 def hotel():
     
@@ -120,34 +194,6 @@ def hotel():
     
 # ========================================================================================================
 
-def register():
-    username = input("Enter user Name: ")
-    email = input("Enter email")
-    password = input("Enter Password")
-    phonenNo = int(input("Enter Phone Number: "))
-
-    user ={
-        "User Name: ": username,
-        "email: ": email,
-        "Password: ":password,
-        "phonenNo: ": phonenNo
-}
-
-    users.append(user)
-    print("Register Sucessfully")
-
-
-def login():
-    email = input("Enter email")
-    password = input("Enter Password")
-
-    for user in users:
-        if user["email"] == email and user["Password"] == password:
-            print("Login Sucessfully")
-            return
-        
-        print("Invilid email or password")
-
 # =======================================================================================================
 def Fast_Food_menu():
     print("Welcome to resturent")
@@ -188,7 +234,9 @@ def Add_Food_To_Cart():
         print(Menu[choice]["name"])
         print("Food Added Successfully!\n")
 
+# ========================================================================================================
 
+# ========================================================================================================
 def view_cart():
    
     G_total = 0
@@ -228,13 +276,9 @@ If you are new please Register
         login()
     else:
         print("Invilid Number")
-        
-
-    print("""
-        1) Fast food
-        2) Desi Food Resturent 
-        2) Hotel 
-        """)
+# =================================
+    hybrid()
+#  ===============================
 
     choice = int(input("Enter Your choice: "))
 
@@ -256,7 +300,7 @@ If you are new please Register
                 view_cart()
             elif choice == 3:
                 print("Thank for visiting ")
-                break
+                return hybrid()
             else:
                 print ("Invilid Nuber you Enter ")
 
@@ -289,8 +333,9 @@ If you are new please Register
         print("Welcome to Hotel")
         print("#"*40)
 
+        hotel()
+# ========================================================================================================
+# ========================================================================================================
 
-
-
-
-
+# ========================================================================================================
+# ========================================================================================================
