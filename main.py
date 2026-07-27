@@ -53,36 +53,53 @@ def Admin_login():
         print(":::::: Admin Login Successfully ::::::")
     else:
         print("Account Blocked")
+    
 
 # ========================================================================================================
 def add_Menu():
     name = input("Enter name: ").strip()
     price = int(input("Enter Price: ").strip())
     new_id = max(Menu.keys())+1
+
     Menu[new_id] ={
         "name":name,
         "price":price
     }
+# ========================================================================================================
+def add_Rmenu():
+    name = input("Enter FOOD name: ")
+    price = int(input("Enter Price: "))
+    new_id = max(Rmenu.keys())+1
 
+    Rmenu[new_id]={
+        "name": name,
+        "price":price
+    }
 # ========================================================================================================
 
 #  ========================================================================================================
 def register():
     username = input("Enter user Name: ")
-    email = input("Enter email")
-    password = input("Enter Password")
-    phonenNo = int(input("Enter Phone Number: "))
+    email = input("Enter email: ")
+    password = input("Enter Password: ")
 
-    user ={
-        "User Name: ": username,
-        "email: ": email,
-        "Password: ":password,
-        "phonenNo: ": phonenNo
-}
+    while True:
+        try:
+            phoneNo = int(input("Enter Phone Number: "))
+            break
+
+        except ValueError:
+            print("Invalid! Please enter phone number in integer.")
+
+    user = {
+        "User Name": username,
+        "email": email,
+        "Password": password,
+        "phoneNo": phoneNo
+    }
 
     users.append(user)
-    print("Register Sucessfully")
-
+    print("Register Successfully")
 
 def login():
     
@@ -104,7 +121,8 @@ def hybrid():
     print("""
             1) Fast food
             2) Desi Food Resturent 
-            2) Hotel 
+            3) Hotel 
+            4) Exit
             """)
 def DesiRes():
     print("""
@@ -261,12 +279,45 @@ def view_cart():
 
 def main():
     welcome()
-
     print("""
-If you are new please Register 
-1) Register
-2) Login
+1) Admin
+2) User
 """)
+    
+
+    role = int(input("Enter 1 for admin and 2 for user: "))
+    if role == 1:
+        Admin_login()
+        print("""Admin Login Sucessfully
+            Know Admin can add new item in menu""")
+
+        while True:
+            print("""1) Add Item in Fast Food
+                    2) Add Item in Resturent
+                    3) Exit""")
+            
+            try:
+                admin_role = int(input("Enter Role: "))
+                if admin_role == 1:
+                    add_Menu()
+                elif admin_role == 2:
+                    add_Rmenu()
+                elif admin_role == 3:
+                    print("Thanks")
+                    break
+                else:
+                    print("Invilid Choice")
+
+            except ValueError:
+                print("Invilid ")
+
+    elif role==2:
+            print("""
+    If you are new please Register 
+    1) Register
+    2) Login
+""")
+            
 
     choice = int(input("Entre 1 for Register and 2 for login: " ))
     if choice == 1:
@@ -277,65 +328,72 @@ If you are new please Register
     else:
         print("Invilid Number")
 # =================================
-    hybrid()
+    
 #  ===============================
 
-    choice = int(input("Enter Your choice: "))
+    while True:
+        hybrid()
+        choice = int(input("Enter Your choice: "))
 
-    if choice == 1:
-        print("#"*40)
-        print("          Welcome to fast Food ")
-        print("#"*40)
-        while True: 
-            print("""
-        1) Add Food
-        2) View Bill 
-        3) Exit 
-        """)
-            choice = int(input("Enter 1 FOR FOOD and 2 for bill: "))
+        if choice == 1:
+            print("#"*40)
+            print("          Welcome to fast Food ")
+            print("#"*40)
+            while True: 
+                print("""
+            1) Add Food
+            2) View Bill 
+            3) Exit 
+            """)
+                choice = int(input("Enter 1 FOR FOOD and 2 for bill: "))
 
-            if choice == 1:
-                Add_Food_To_Cart()
-            elif choice ==2: 
-                view_cart()
-            elif choice == 3:
-                print("Thank for visiting ")
-                return hybrid()
-            else:
-                print ("Invilid Nuber you Enter ")
+                if choice == 1:
+                    Add_Food_To_Cart()
+                elif choice ==2: 
+                    view_cart()
+                elif choice == 3:
+                    print("Thank for visiting ")
+                    break
+                else:
+                    print ("Invilid Nuber you Enter ")
 
-    elif choice == 2:
-        print("#"*40)
-        print("Welcome to Resturent")
-        print("#"*40)
+        elif choice == 2:
+            print("#"*40)
+            print("Welcome to Resturent")
+            print("#"*40)
 
-        DesiRes()
-        while True: 
-                    print("""
-                1) Add Food
-                2) View Bill 
-                3) Exit 
-                """)
-                    choice = int(input("Enter 1 FOR FOOD and 2 for bill: "))
-        
-                    if choice == 1:
-                        Add_Food_To_Cart()
-                    elif choice ==2: 
-                        view_cart()
-                    elif choice == 3:
-                        print("Thank for visiting ")
-                        break
-                    else:
-                        print ("Invilid Nuber you Enter ")
+            DesiRes()
+            while True: 
+                        print("""
+                    1) Add Food
+                    2) View Bill 
+                    3) Exit 
+                    """)
+                        choice = int(input("Enter 1 FOR FOOD and 2 for bill: "))
+            
+                        if choice == 1:
+                            Add_Food_To_Cart()
+                        elif choice ==2: 
+                            view_cart()
+                        elif choice == 3:
+                            print("Thank for visiting ")
+                            break
+                        else:
+                            print ("Invilid Nuber you Enter ")
 
-    elif choice == 3:
-        print("#"*40)
-        print("Welcome to Hotel")
-        print("#"*40)
+        elif choice == 3:
+            print("#"*40)
+            print("Welcome to Hotel")
+            print("#"*40)
+            hotel()
 
-        hotel()
+        elif choice == 4:
+            print("Thanks for using")
+            break
+        else :
+            print("Invilid")
 # ========================================================================================================
 # ========================================================================================================
-
+main()
 # ========================================================================================================
 # ========================================================================================================
