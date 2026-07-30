@@ -124,6 +124,69 @@ def hybrid():
             3) Hotel 
             4) Exit
             """)
+    # ========================================================================================================
+    # ========================================================================================================
+def Fast_Food_menu():
+    print("Welcome to resturent")
+    print('''Resturent Menu
+    1) Burger           Rs: 450
+    2) Fries            Rs: 200
+    3) Small Pizza      Rs: 600
+    4) Medium Pizza     Rs: 1000
+    5) Large Pizza      Rs: 1600
+    6) Shawarma         Rs: 350
+    5) Cold Drinks      Rs: 120
+    ''')
+
+
+def Add_Food_To_Cart():
+    Fast_Food_menu()
+    while True:
+
+        choice = int(input("""Enter Food Choice (0 to Exit):
+    """))
+
+        if choice == 0:
+            break
+
+        if choice not in Menu:
+            print("Invalid Choice")
+            continue
+
+        quantity = int(input("Enter Quantity: "))
+
+        # Add item to cart here...
+        cart.append({
+                    "name": Menu[choice]["name"],
+                    "price": Menu[choice]["price"],
+                    "quantity": quantity
+                })
+        
+        print(Menu[choice]["name"])
+        print("Food Added Successfully!\n")
+
+# ========================================================================================================
+
+# ========================================================================================================
+def view_cart():
+   
+    G_total = 0
+    
+    print(f"{'Item':<25}{'Qty':<10}{'Price':<10}{'Total'}")
+
+    for item in cart:
+        total = item["price"]*item["quantity"]
+
+        G_total += total 
+        print(f"{item["name"]:<25}{item["quantity"]:<10}{item["price"]:<10}{total}")
+
+        
+    print("Final Bill: ", G_total)
+
+    print("*"*30)
+
+# ========================================================================================================
+# ========================================================================================================
 def DesiRes():
     print("""
         1) Half chicken Karahi        Rs 1000
@@ -213,64 +276,6 @@ def hotel():
 # ========================================================================================================
 
 # =======================================================================================================
-def Fast_Food_menu():
-    print("Welcome to resturent")
-    print('''Resturent Menu
-    1) Burger           Rs: 450
-    2) Fries            Rs: 200
-    3) Small Pizza      Rs: 600
-    4) Medium Pizza     Rs: 1000
-    5) Large Pizza      Rs: 1600
-    6) Shawarma         Rs: 350
-    5) Cold Drinks      Rs: 120
-    ''')
-
-
-def Add_Food_To_Cart():
-    Fast_Food_menu()
-    while True:
-
-        choice = int(input("""Enter Food Choice (0 to Exit):
-    """))
-
-        if choice == 0:
-            break
-
-        if choice not in Menu:
-            print("Invalid Choice")
-            continue
-
-        quantity = int(input("Enter Quantity: "))
-
-        # Add item to cart here...
-        cart.append({
-                    "name": Menu[choice]["name"],
-                    "price": Menu[choice]["price"],
-                    "quantity": quantity
-                })
-        
-        print(Menu[choice]["name"])
-        print("Food Added Successfully!\n")
-
-# ========================================================================================================
-
-# ========================================================================================================
-def view_cart():
-   
-    G_total = 0
-    
-    print(f"{'Item':<25}{'Qty':<10}{'Price':<10}{'Total'}")
-
-    for item in cart:
-        total = item["price"]*item["quantity"]
-
-        G_total += total 
-        print(f"{item["name"]:<25}{item["quantity"]:<10}{item["price"]:<10}{total}")
-
-        print("*"*30)
-        print("Final Bill: ", G_total)
-
-    print("*"*30)
 
 
 # ===================================================================================================
